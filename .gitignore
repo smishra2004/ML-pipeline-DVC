@@ -1,4 +1,10 @@
 # Byte-compiled / optimized / DLL files
+data
+models
+reports
+.vscode
+Experiments
+workflow.txt
 __pycache__/
 *.py[codz]
 *$py.class

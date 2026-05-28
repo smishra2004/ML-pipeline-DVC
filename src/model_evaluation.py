@@ -1,6 +1,7 @@
 import os
 import json
 import logging
+import yaml
 import pandas as pd
 import numpy as np
 import pickle
@@ -25,6 +26,22 @@ file_handler.setFormatter(formatter)
 
 logger.addHandler(console_handler)
 logger.addHandler(file_handler)
+
+def load_params(params_path:str)->dict:
+    try:
+        with open(params_path,'r') as file:
+            params = yaml.safe_load(file)
+            logger.debug('Parameters retrieved from %s', params_path)
+            return params
+    except FileNotFoundError:
+        logger.error('File not found: %s', params_path)
+        raise
+    except yaml.YAMLError as e:
+        logger.error('YAML error: %s', e)
+        raise
+    except Exception as e:
+        logger.error('Unexpected error: %s', e)
+        raise
 
 def load_model(file_path: str):
     """Load the trained model from a file."""
