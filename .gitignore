@@ -5,6 +5,7 @@ reports
 .vscode
 Experiments
 workflow.txt
+dvclive
 __pycache__/
 *.py[codz]
 *$py.class
